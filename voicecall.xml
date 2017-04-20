@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+    <Say voice="alice">Thanks for calling. This number is used to send text messages out for Ana and Brad's wedding.</Say>
+    <Pause length="1"/>
+    <Say voice="alice">We are excited to see you on August 11th at 6 P M</Say>
+</Response>
