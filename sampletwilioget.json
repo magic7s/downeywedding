@@ -1,0 +1,21 @@
+{
+	"ToCountry" : "US",
+	"ToState" : "CA",
+	"SmsMessageSid" : "SMb096b90f84724dda4f5fc0915224f592",
+	"NumMedia" : 0,
+	"ToCity" : "",
+	"FromZip" : 94598,
+	"SmsSid" : "SMb096b90f84724dda4f5fc0915224f592",
+	"FromState" : "CA",
+	"SmsStatus" : "received",
+	"FromCity" : "WALNUT+CREEK",
+	"Body" : "test",
+	"FromCountry" : "US",
+	"To" : "+13237010811",
+	"ToZip" : "",
+	"NumSegments" : 1,
+	"MessageSid" : "SMb096b90f84724dda4f5fc0915224f592",
+	"AccountSid" : "AC73bfca3402ff6163d802e8290b287451",
+	"From" : "+19254573000",
+	"ApiVersion" : "2010-04-01"
+}

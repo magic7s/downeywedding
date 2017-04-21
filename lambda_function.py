@@ -16,17 +16,29 @@ def openspreadsheet(file, sheet):
 	return myworksheet
 
 def updatecol(guestnum, col, message):
+	print("Opening Sheet")
 	updatesheet = openspreadsheet(os.environ['GSPREAD_FILENAME'], os.environ['GSPREAD_WORKSHEET_WRITE'])
-	guest_confirmation_cell = updatesheet.find(str(guestnum).strip("+"))
-	# If find fails insert a new row
-	updatesheet.update_acell(col + str(guest_confirmation_cell.row), message) 
+	try:
+		print("Looking for number " + str(guestnum).strip("+"))
+		guest_confirmation_cell = updatesheet.find(str(guestnum).strip("+"))
+		print("Updating cell: " + col + str(guest_confirmation_cell.row))
+		message = updatesheet.acell(col + str(guest_confirmation_cell.row)).value + "\n" + message
+		updatesheet.update_acell(col + str(guest_confirmation_cell.row), message)
+		print("Found number and updated col")
+	except gspread.exceptions.CellNotFound:
+		newrow = updatesheet.row_count + 1
+		updatesheet.insert_row(["", guestnum], index=newrow)
+		updatesheet.update_acell(col + str(newrow), message)
+		print("Number not found, adding new row")
 
 def handleMMS(event):
+	print("Handling MMS")
 	message = "Pic URL = " + event['image']
 	updatecol(event['fromNumber'], os.environ['GSPREAD_COL_WRITE'], message)
 	return message
 
 def handleSMS(event):
+	print("Handling SMS")
 	message = event['body']
 	updatecol(event['fromNumber'], os.environ['GSPREAD_COL_WRITE'], message)
 	return message
@@ -35,8 +47,9 @@ def lambda_handler(event, context):
     print(event)
 #   print (updatesheet.get_all_records())
     if int(event['numMedia']) > 0:
-        twilio_resp = handleMMS(event)
+        handleMMS(event)
     else:    
-        twilio_resp = handleSMS(event)
-    twilio_resp = "Thank you for your response. --Ana & Brad"
+        handleSMS(event)
+    twilio_resp = "Thank you for your response. We look forward to seeing you on August 11th. Check out www.anabrad.com for more info. -- Ana and Brad"
+    print("Finished")
     return twilio_resp
