@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
-<<<<<<< HEAD
     <Say voice="woman">Thanks for calling. This number is used to send text messages out for Ana and Brad's wedding.</Say>
     <Pause length="1"/>
     <Say voice="woman">We are excited to see you on August 11th at 6 P M</Say>
 </Response>
-=======
-	<Play>https://github.com/magic7s/downeywedding/blob/master/WeddingRecording.m4a?raw=true</Play>
-</Response>
->>>>>>> 0c2a78e883a6bc8c4948d988a32ab147cf5a16f4
