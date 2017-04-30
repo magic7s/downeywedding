@@ -46,10 +46,13 @@ def handleSMS(event):
 def lambda_handler(event, context):
     print(event)
 #   print (updatesheet.get_all_records())
-    if int(event['numMedia']) > 0:
-        handleMMS(event)
-    else:    
-        handleSMS(event)
-    twilio_resp = "Thank you for your response. We look forward to seeing you on August 11th. Check out www.anabrad.com for more info. -- Ana and Brad"
-    print("Finished")
-    return twilio_resp
+    try:
+        if int(event['numMedia']) > 0:
+            handleMMS(event)
+        else:    
+            handleSMS(event)
+        twilio_resp = "Thank you for your response. We look forward to seeing you on August 11th. Check out www.anabrad.com for more info. -- Ana and Brad"
+        print("Finished")
+        return twilio_resp
+    except:
+        return("An error occured")
