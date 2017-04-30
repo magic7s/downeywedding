@@ -1,0 +1,5 @@
+{
+	"filter" : {"Confirmation_status" : "YES", "Language" : "english"},
+	"message" : "This is a test \nwith a new line"
+}
+	
