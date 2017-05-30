@@ -66,6 +66,9 @@ else:
 	sendto = []
 	for person in readgooglesheet():
 		if len(smstemplate['filter']) == len(dict_compare(person, smstemplate['filter'])):
+			if str(person['Telephone_number']) == '':
+				print("Skipping " + str(person['Name']) + " due to missing number")
+				continue
 			sendto.append("+" + str(person['Telephone_number']))
 	#Do we test or send?
 	if sys.argv[1] == "--send":
