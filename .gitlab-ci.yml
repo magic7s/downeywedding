@@ -1,0 +1,11 @@
+image: python:latest
+lambda zip:
+  script:
+    - pip install gspread oauth2client -t ./project-dir
+    - apt-get update && apt-get install zip -y
+    - cp lambda_function.py ./project-dir
+    - cp $GoogleSheetAPIOAUTH2 ./project-dir/GoogleSheetAPI-OAUTH2.json
+    - cd project-dir;zip -r ../mylambdafunction.zip ./ -x *.pyc ; cd ..
+  artifacts:
+    paths:
+      - mylambdafunction.zip
